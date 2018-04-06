@@ -3,7 +3,8 @@ package bearychat
 import "time"
 
 type RTMContext struct {
-	Loop RTMLoop
+	Loop   RTMLoop
+	Client RTMClient
 
 	uid string
 }
@@ -29,8 +30,9 @@ func NewRTMContext(token string, setters ...rtmOptSetter) (*RTMContext, error) {
 	}
 
 	return &RTMContext{
-		Loop: rtmLoop,
-		uid:  user.Id,
+		Loop:   rtmLoop,
+		Client: *rtmClient,
+		uid:    user.Id,
 	}, nil
 }
 
