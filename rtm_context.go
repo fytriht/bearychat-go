@@ -12,8 +12,8 @@ func (c *RTMContext) UID() string {
 	return c.uid
 }
 
-func NewRTMContext(token string) (*RTMContext, error) {
-	rtmClient, err := NewRTMClient(token)
+func NewRTMContext(token string, setters ...rtmOptSetter) (*RTMContext, error) {
+	rtmClient, err := NewRTMClient(token, setters...)
 	if err != nil {
 		return nil, err
 	}
